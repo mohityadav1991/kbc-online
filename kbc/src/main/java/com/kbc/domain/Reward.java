@@ -23,9 +23,9 @@ public class Reward implements Serializable {
     @Column(nullable = false)
     private Integer points_threshold;
 
-    @JsonProperty("vendor_id")
-    @Column(nullable = false)
-    private Integer vendor_id;
+    @JoinColumn(name = "vendorid")
+    @OneToOne(cascade = CascadeType.ALL)
+    private Vendor vendor;
 
     @JsonProperty("coupon_type")
     @Column(nullable = false)
@@ -34,9 +34,9 @@ public class Reward implements Serializable {
     public Reward() {
     }
 
-    public Reward(Integer points_threshold, Integer vendor_id, String coupon_type) {
+    public Reward(Integer points_threshold, Vendor vendor, String coupon_type) {
         this.points_threshold = points_threshold;
-        this.vendor_id = vendor_id;
+        this.vendor = vendor;
         this.coupon_type = coupon_type;
     }
 
@@ -56,12 +56,12 @@ public class Reward implements Serializable {
         this.points_threshold = points_threshold;
     }
 
-    public Integer getVendor_id() {
-        return vendor_id;
+    public Vendor getVendor() {
+        return vendor;
     }
 
-    public void setVendor_id(Integer vendor_id) {
-        this.vendor_id = vendor_id;
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
     }
 
     public String getCoupon_type() {
@@ -77,7 +77,7 @@ public class Reward implements Serializable {
         final StringBuilder sb = new StringBuilder("Reward{");
         sb.append("rewardid=").append(rewardid);
         sb.append(", points_threshold=").append(points_threshold);
-        sb.append(", vendor_id=").append(vendor_id);
+        sb.append(", vendor=").append(vendor);
         sb.append(", coupon_type='").append(coupon_type).append('\'');
         sb.append('}');
         return sb.toString();

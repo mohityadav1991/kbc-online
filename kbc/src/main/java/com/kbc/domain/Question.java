@@ -7,9 +7,10 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
-@Table(schema = "dbo", name = "User")
+@Table(schema = "dbo", name = "question")
 @JsonAutoDetect
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Question implements Serializable{
@@ -28,12 +29,17 @@ public class Question implements Serializable{
     @Column(name = "answer")
     private Integer answer;
 
+    @ManyToOne
+    @JoinColumn(name="matchid",foreignKey=@ForeignKey(name="question_matchid_fk"))
+    private Match match;
+
     public Question() {
     }
 
-    public Question(String question, Integer answer) {
+    public Question(String question, Integer answer, Match match) {
         this.question = question;
         this.answer = answer;
+        this.match = match;
     }
 
     public Long getQuestionid() {
@@ -60,12 +66,21 @@ public class Question implements Serializable{
         this.answer = answer;
     }
 
+    public Match getMatch() {
+        return match;
+    }
+
+    public void setMatch(Match match) {
+        this.match = match;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Question{");
         sb.append("questionid=").append(questionid);
         sb.append(", question='").append(question).append('\'');
         sb.append(", answer=").append(answer);
+        sb.append(", match=").append(match);
         sb.append('}');
         return sb.toString();
     }

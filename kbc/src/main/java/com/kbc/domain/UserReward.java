@@ -3,6 +3,7 @@ package com.kbc.domain;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,17 +14,32 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserReward implements Serializable{
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
+    private long id;
+
     @ManyToOne
-    @JoinColumn(name="userid",foreignKey=@ForeignKey(name="userid_fk"))
+    @JoinColumn(name="userid",foreignKey=@ForeignKey(name="reward_userid_fk"))
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="rewardid",foreignKey=@ForeignKey(name="rewardid_fk"))
+    @JoinColumn(name="rewardid",foreignKey=@ForeignKey(name="user_rewardid_fk"))
     private Reward reward;
 
     @JsonProperty("coupon")
     @Column
     private String coupon;
+
+    public UserReward() {
+    }
+
+    public UserReward(User user, Reward reward, String coupon) {
+        this.user = user;
+        this.reward = reward;
+        this.coupon = coupon;
+    }
 
     public User getUser() {
         return user;

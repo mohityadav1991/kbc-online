@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(schema = "dbo", name = "User")
+@Table(schema = "dbo", name = "kbc_user")
 @JsonAutoDetect
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User implements Serializable{
