@@ -31,7 +31,7 @@ public class RewardResource extends AbstractRestHandler{
                             HttpServletRequest request, HttpServletResponse response) {
         System.out.println("here...."+reward.toString());
         Reward createdReward = this.rewardService.createReward(reward);
-        response.setHeader("Location", request.getRequestURL().append("/").append(createdReward.getId()).toString());
+        response.setHeader("Location", request.getRequestURL().append("/").append(createdReward.getRewardid()).toString());
     }
 
     @RequestMapping(value = "",
