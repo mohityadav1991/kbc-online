@@ -25,11 +25,16 @@ public class Match implements Serializable {
     @Column
     private String answer;
 
+
+    @OneToMany(cascade = CascadeType.ALL,  mappedBy="match")
+    public Set<Question> questions;
+
     public Match() {
     }
 
-    public Match(String answer) {
+    public Match(String answer, Set<Question> questions) {
         this.answer = answer;
+        this.questions = questions;
     }
 
     public long getMatchid() {
@@ -48,12 +53,11 @@ public class Match implements Serializable {
         this.answer = answer;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Match{");
-        sb.append("matchid=").append(matchid);
-        sb.append(", answer='").append(answer).append('\'');
-        sb.append('}');
-        return sb.toString();
+    public Set<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Set<Question> questions) {
+        this.questions = questions;
     }
 }
