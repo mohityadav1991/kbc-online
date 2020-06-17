@@ -10,6 +10,9 @@ This application is packaged as a war which has Tomcat 8 embedded. No Tomcat or 
 * You can build the project and run the tests by running ```mvn clean package```
 * Once successfully built, you can run the service by one of these two methods:
 * After this just go to /kbc-online/kbc/src/main/java/com/kbc/KbcApplication.java and run it as java application
-(there is option to run form cli also, but it reuires some dependency, willl update once I add the code for that too.)
-*Please do check details in application.properties file for database details, change the driver and other details accordingly. I have used SQL (on docker image)
+(there is option to run with ```java -jar -Dspring.profiles.active=test target/connect-0.5.0.war
+                                or
+                                        mvn spring-boot:run -Drun.arguments="spring.profiles.active=test"```,
+ but it requires some dependency, willl update once I add the code for that too.)
+*Please do check details in application.properties file for database details, change the driver and other details accordingly. I have used SQL (on docker image).
 
