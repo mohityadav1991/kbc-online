@@ -25,7 +25,7 @@ public class MatchResource {
             consumes = {"application/json", "application/xml"},
             produces = {"application/json", "application/xml"})
     @ResponseStatus(HttpStatus.CREATED)
-    public void createReward(@RequestBody Match match,
+    public void createMatch(@RequestBody Match match,
                              HttpServletRequest request, HttpServletResponse response) {
         Match createdMatch = this.matchService.createMatch(match);
         response.setHeader("Location", request.getRequestURL().append("/").append(createdMatch.getMatchid()).toString());

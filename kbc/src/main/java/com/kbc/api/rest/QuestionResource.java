@@ -26,7 +26,7 @@ public class QuestionResource {
             consumes = {"application/json", "application/xml"},
             produces = {"application/json", "application/xml"})
     @ResponseStatus(HttpStatus.CREATED)
-    public void createReward(@RequestBody Question question,
+    public void createQuestion(@RequestBody Question question,
                              HttpServletRequest request, HttpServletResponse response) {
         Question createdQuestion = this.questionService.createQuestion(question);
         response.setHeader("Location", request.getRequestURL().append("/").append(createdQuestion.getQuestionid()).toString());
