@@ -20,8 +20,6 @@ public class RewardService {
     @Autowired
     private RewardRepository rewardRepository;
 
-
-
     public RewardService() {
     }
 
