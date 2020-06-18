@@ -1,6 +1,7 @@
 package com.kbc.api.rest;
-import com.kbc.domain.Vendor;
-import com.kbc.service.VendorService;
+
+import com.kbc.domain.Question;
+import com.kbc.service.QuestionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,23 +13,23 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/example/v1/vendors")
-public class VendorResource {
+@RequestMapping(value = "/example/v1/questions")
+public class QuestionResource {
 
     @Autowired
-    private VendorService vendorService;
+    private QuestionService questionService;
 
-    private static final Logger log = LoggerFactory.getLogger(VendorResource.class);
+    private static final Logger log = LoggerFactory.getLogger(QuestionResource.class);
 
     @RequestMapping(value = "",
             method = RequestMethod.POST,
             consumes = {"application/json", "application/xml"},
             produces = {"application/json", "application/xml"})
     @ResponseStatus(HttpStatus.CREATED)
-    public void createVendor(@RequestBody Vendor reward,
+    public void createReward(@RequestBody Question question,
                              HttpServletRequest request, HttpServletResponse response) {
-        Vendor createdVendor = this.vendorService.createVendor(reward);
-        response.setHeader("Location", request.getRequestURL().append("/").append(createdVendor.getVendorid()).toString());
+        Question createdQuestion = this.questionService.createQuestion(question);
+        response.setHeader("Location", request.getRequestURL().append("/").append(createdQuestion.getQuestionid()).toString());
     }
 
     @RequestMapping(value = "",
@@ -37,8 +38,8 @@ public class VendorResource {
     @ResponseStatus(HttpStatus.OK)
     public
     @ResponseBody
-    List<Vendor> getAllVendor(HttpServletRequest request, HttpServletResponse response){
+    List<Question> getAllQuestion(HttpServletRequest request, HttpServletResponse response){
 
-        return this.vendorService.getAllVendors();
+        return this.questionService.getAllQuestions();
     }
 }
