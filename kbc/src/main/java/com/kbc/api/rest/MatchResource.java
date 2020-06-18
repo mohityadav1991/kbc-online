@@ -37,7 +37,7 @@ public class MatchResource {
     @ResponseStatus(HttpStatus.OK)
     public
     @ResponseBody
-    List<Match> getAllReward(HttpServletRequest request, HttpServletResponse response){
+    List<Match> getAllMatch(HttpServletRequest request, HttpServletResponse response){
 
         return this.matchService.getAllMatches();
     }
