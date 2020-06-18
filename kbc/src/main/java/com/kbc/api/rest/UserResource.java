@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/example/v1/users")
+@RequestMapping(value = "/kbc/v1/users")
 public class UserResource {
 
     @Autowired

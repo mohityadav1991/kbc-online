@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/example/v1/rewards")
+@RequestMapping(value = "/kbc/v1/rewards")
 public class RewardResource extends AbstractRestHandler{
 
     @Autowired

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/example/v1/matches")
+@RequestMapping(value = "/kbc/v1/matches")
 public class MatchResource {
     @Autowired
     private MatchService matchService;
