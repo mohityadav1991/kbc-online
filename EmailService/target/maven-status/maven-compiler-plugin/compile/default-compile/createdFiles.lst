@@ -1,0 +1,9 @@
+com/kbc/EmailService/exception/GeneralException.class
+com/kbc/EmailService/BO/MessageDetail.class
+com/kbc/EmailService/exception/CustomExceptionHandler.class
+com/kbc/EmailService/controler/EmailProvider.class
+com/kbc/EmailService/ServletInitializer.class
+com/kbc/EmailService/exception/ErrorResponse.class
+com/kbc/EmailService/EmailServiceApplication.class
+com/kbc/EmailService/service/EmailSender.class
+com/kbc/EmailService/exception/ValidationException.class
